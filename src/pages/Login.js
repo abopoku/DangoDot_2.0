@@ -26,7 +26,7 @@ const Login = ({setIsAuthenticated}) => {
     e.preventDefault();
     try {
       if (currentAction === 'Sign Up') {
-        const response = await axios.post('http://localhost:3500/register', {
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/register`, {
           name: formData.name,
           email: formData.email,
           password: formData.password
@@ -35,7 +35,7 @@ const Login = ({setIsAuthenticated}) => {
         setIsAuthenticated(true);
         navigate('/home');
       } else {
-        const response = await axios.post('http://localhost:3500/login', {
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/login`, {
           email: formData.email,
           password: formData.password
         });

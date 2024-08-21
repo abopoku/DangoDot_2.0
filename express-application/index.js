@@ -1,9 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const aws = require('serverless-http'); //aws setup
 const app = express();
-const port = 3500;
+const port = process.env.PORT || 3500;
 const mongoose = require('mongoose');
 const database_url = process.env.database_url;
 const jwt = require('jsonwebtoken');
@@ -83,8 +82,8 @@ app.delete('/users/:id', async (req, res) => {
     }
 });
 
-// app.listen(port, () => {
-//   console.log(`Server is running on port ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
-module.exports.handler = aws(app); //aws setup
+
